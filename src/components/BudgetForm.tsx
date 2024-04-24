@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from "react"
+import { ChangeEvent, FormEvent, useMemo, useState } from "react"
 
 
 export default function BudgetForm() {
@@ -13,8 +13,13 @@ export default function BudgetForm() {
       return isNaN(budget) || budget <= 0
   }, [budget])
 
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Añadir o Definir Presupuesto')
+  }
   return (
-    <form className="space-y-5">
+    <form className="space-y-5" onSubmit={handleSubmit}>
       <div className="flex flex-col space-y-5">
         <label htmlFor="budget" className="text-4xl text-blue-600 font-bold text-center">Definir Presupuesto
         </label>
