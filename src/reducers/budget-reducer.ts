@@ -7,6 +7,7 @@ export type BudgetState = {
   budget: number
 }
 
+// aqui podemos agregar los diferentes state
 export const initialState: BudgetState = {
   budget: 0
 }

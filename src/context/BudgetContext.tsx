@@ -12,9 +12,14 @@ type BudgetProviderProps = {
 
 export const BudgetContext = createContext<BudgetContextProps>(null!)
 
+// el context nos sirve para generar el context que incluye los datos
+
 export const BudgetProvider = ({children} : BudgetProviderProps) => {
+  // el provider es de donde vienen los datos y de donde vienen las funciones
 
   const [state, dispatch] = useReducer(budgetReducer, initialState)
+  //aqui le pasmos el Reducer dentro del provider
+
 
   return(
       <BudgetContext.Provider
