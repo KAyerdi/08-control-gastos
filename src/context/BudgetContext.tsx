@@ -9,7 +9,7 @@ type BudgetContextProps = {
 type BudgetProviderProps = {
   children: ReactNode
 }
-
+//el "createContext" nos permite crear nuestro context
 export const BudgetContext = createContext<BudgetContextProps>(null!)
 
 // el context nos sirve para generar el context que incluye los datos
