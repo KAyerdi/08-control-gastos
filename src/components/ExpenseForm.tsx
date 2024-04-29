@@ -3,8 +3,9 @@ import 'react-calendar/dist/Calendar.css';
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import { categories } from "../data/categories";
-import type { DraftExpense } from '../types';
+import type { DraftExpense, Value } from '../types';
 import ErrorMessage from './ErrorMessage';
+import { useBudget } from '../hooks/useBudget';
 
 
 export default function ExpenseForm() {
@@ -16,6 +17,7 @@ export default function ExpenseForm() {
   })
 
   const [error, setError] = useState('')
+  const {dispatch} = useBudget()
 
   const handleChange = (e: ChangeEvent <HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const {name, value } = e.target
@@ -40,7 +42,9 @@ export default function ExpenseForm() {
       setError('Todos los campos son requeridos')
       return
     }
-    console.log('todo bien..')
+    //Agregar un nuevo gasto
+    dispatch({type: 'add-expense', payload: { expense }
+    })
   }
 
   return (
