@@ -21,7 +21,7 @@ export const initialState: BudgetState = {
   expenses: []
 }
 
-const createExpense = (DraftExpense: DraftExpense) : expense => {
+const createExpense = (DraftExpense: DraftExpense) : Expense => {
   return {
     ...DraftExpense,
     id: uuidv4()
@@ -58,7 +58,8 @@ export const budgetReducer = (
     const expense = createExpense(action.payload.expense)
     return {
       ...state,
-      expenses:[...state.expenses, expense]
+      expenses:[...state.expenses, expense],
+      modal: false
     }
   }
   return state
