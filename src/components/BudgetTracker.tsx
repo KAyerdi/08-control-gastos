@@ -4,8 +4,9 @@ import { useBudget } from "../hooks/useBudget";
 import AmountDisplay from "./AmountDisplay";
 
 export default function BudgetTracker() {
-  const { state, totalExpenses, remainingBudget } = useBudget()
+  const { state, totalExpenses, remainingBudget, dispatch } = useBudget()
   const percentage = +((totalExpenses / state.budget) * 100).toFixed(2)
+  
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
       <div className='flex justify-center'>
@@ -15,7 +16,7 @@ export default function BudgetTracker() {
             pathColor: percentage === 100 ? '#DC2626' : '#3B86F6',
             trailColor: '#F5F5F5',
             textSize: 8,
-            textColor:'#3B86F6'
+            textColor: percentage === 100 ? '#DC2626' : '#3B86F6'
           })}
           text={`${percentage}% Gastado`}
         />
@@ -24,6 +25,7 @@ export default function BudgetTracker() {
         <button
           type='button'
           className='bg-pink-600 w-full p-2 text-white uppercase font-bold rounded-lg'
+          onClick={() => dispatch({type:'reset-app'})}
         >
           Resetear App
         </button>
